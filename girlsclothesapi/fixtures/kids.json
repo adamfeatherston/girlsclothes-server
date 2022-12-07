@@ -1,0 +1,30 @@
+[
+    {
+        "model": "girlsclothesapi.kid",
+        "pk": 1,
+        "fields": {
+            "user": 3,
+            "age": 3,
+            "dress_size": "4T",
+            "shoe_size": "10",
+            "shirt_size": "4T",
+            "pant_size": "4T",
+            "underwear_or_diaper_size": "4T",
+            "sock_size": "3T-4T"
+        }
+    },
+    {
+        "model": "girlsclothesapi.kid",
+        "pk": 2,
+        "fields": {
+            "user": 4,
+            "age": 1,
+            "dress_size": "2T",
+            "shoe_size": "5",
+            "shirt_size": "2T",
+            "pant_size": "2T",
+            "underwear_or_diaper_size": "4",
+            "sock_size": "1T-2T"
+        }
+    }
+]

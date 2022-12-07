@@ -1,0 +1,74 @@
+[
+    {
+        "model": "auth.user",
+        "pk": 1,
+        "fields": {
+            "password": "pbkdf2_sha256$320000$skKMaZQjJwGMIJO1MmeaoP$68b2U4VFPL1ZQYgYmM7sIJUWPDhKCrAJOrdz4MWnLq4=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "ParentTest1",
+            "first_name": "Adam",
+            "last_name": "Featherston",
+            "email": "j.adam.featherston@gmail.com",
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2022-10-21T21:15:55.764Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 2,
+        "fields": {
+            "password": "pbkdf2_sha256$320000$6caQGznxTT5xOWckvjT6QO$YZTdqhVzw5XIXUcA2TrQsZuC4SJGBeFc2OYOIz6j8Lk=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "ParentTest2",
+            "first_name": "Kimberly",
+            "last_name": "Featherston",
+            "email": "kimberlyfeatherston1@gmail.com",
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2022-10-21T21:16:33.812Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 3,
+        "fields": {
+            "password": "pbkdf2_sha256$320000$NKseENHvY06F1AIu2RdtPX$mEuwkQRhvscNYW9ORA68BddrY96oVevnyLz6szhmrO4=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "KidTest1",
+            "first_name": "Laurel",
+            "last_name": "Featherston",
+            "email": "thefeatherstonfam@gmail.com",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2022-10-21T21:17:24.322Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 4,
+        "fields": {
+            "password": "pbkdf2_sha256$320000$d3OTZFUe5DZje6Kb6rm7zv$5oKmFOAQ2WtJQJ+FCT4tXnkbsL60zQN0OTM4nPQQ69A=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "KidTest2",
+            "first_name": "Hazel",
+            "last_name": "Featherston",
+            "email": "thefeatherstonfam@gmail.com",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2022-10-21T21:18:12.946Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    }
+]

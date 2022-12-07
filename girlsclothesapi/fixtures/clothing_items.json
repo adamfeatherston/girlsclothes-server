@@ -1,0 +1,142 @@
+[
+    {
+        "model": "girlsclothesapi.clothingitem",
+        "pk": 1,
+        "fields": {
+            "item_description": "Red Dress",
+            "clothing_type": 3,
+            "kid": 1,
+            "size": "4T-5T",
+            "clean_or_dirty": 1,
+            "item_fits": 1,
+            "item_image": "",
+            "sibling_has_match": 0
+        }
+    },
+    {
+        "model": "girlsclothesapi.clothingitem",
+        "pk": 2,
+        "fields": {
+            "item_description": "Pink Pants",
+            "clothing_type": 2,
+            "kid": 2,
+            "size": "12-18 months",
+            "clean_or_dirty": 1,
+            "item_fits": 1,
+            "item_image": "",
+            "sibling_has_match": 0
+        }
+    },
+    {
+        "model": "girlsclothesapi.clothingitem",
+        "pk": 3,
+        "fields": {
+            "item_description": "Pink Shirt with white stripes and yellow sun.",
+            "clothing_type": 1,
+            "kid": 1,
+            "size": "4T",
+            "clean_or_dirty": 1,
+            "item_fits": 1,
+            "item_image": "",
+            "sibling_has_match": 1
+        }
+        },
+    {
+        "model": "girlsclothesapi.clothingitem",
+        "pk": 4,
+        "fields": {
+            "item_description": "Pink Shirt with white stripes and yellow sun.",
+            "clothing_type": 1,
+            "kid": 2,
+            "size": "18 Months",
+            "clean_or_dirty": 1,
+            "item_fits": 1,
+            "item_image": "",
+            "sibling_has_match": 1
+        }
+    },
+    {
+        "model": "girlsclothesapi.clothingitem",
+        "pk": 5,
+        "fields": {
+            "item_description": "Brown Boots.",
+            "clothing_type": 7,
+            "kid": 2,
+            "size": "5",
+            "clean_or_dirty": 1,
+            "item_fits": 1,
+            "item_image": "",
+            "sibling_has_match": 1
+        }
+    },
+    {
+        "model": "girlsclothesapi.clothingitem",
+        "pk": 6,
+        "fields": {
+            "item_description": "Brown Boots.",
+            "clothing_type": 7,
+            "kid": 1,
+            "size": "10",
+            "clean_or_dirty": 1,
+            "item_fits": 1,
+            "item_image": "",
+            "sibling_has_match": 1
+        }
+    },
+    {
+        "model": "girlsclothesapi.clothingitem",
+        "pk": 7,
+        "fields": {
+            "item_description": "Blue Jean Dress.",
+            "clothing_type": 3,
+            "kid": 1,
+            "size": "5T",
+            "clean_or_dirty": 1,
+            "item_fits": 1,
+            "item_image": "",
+            "sibling_has_match": 1
+        }
+    },
+    {
+        "model": "girlsclothesapi.clothingitem",
+        "pk": 8,
+        "fields": {
+            "item_description": "Blue Jean Dress.",
+            "clothing_type": 3,
+            "kid": 2,
+            "size": "18 Months",
+            "clean_or_dirty": 1,
+            "item_fits": 1,
+            "item_image": "",
+            "sibling_has_match": 1
+        }
+    },
+    {
+        "model": "girlsclothesapi.clothingitem",
+        "pk": 9,
+        "fields": {
+            "item_description": "Fun Cow Socks.",
+            "clothing_type": 6,
+            "kid": 1,
+            "size": "4T-5T",
+            "clean_or_dirty": 1,
+            "item_fits": 1,
+            "item_image": "",
+            "sibling_has_match": 0
+        }
+    },
+    {
+        "model": "girlsclothesapi.clothingitem",
+        "pk": 10,
+        "fields": {
+            "item_description": "Vol Socks.",
+            "clothing_type": 6,
+            "kid": 2,
+            "size": "XS",
+            "clean_or_dirty": 1,
+            "item_fits": 0,
+            "item_image": "",
+            "sibling_has_match": 0
+        }
+    }
+]

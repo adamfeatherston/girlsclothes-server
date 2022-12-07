@@ -1,0 +1,79 @@
+[
+    {
+        "model": "girlsclothesapi.clothingtype",
+        "pk": 1,
+        "fields": {
+            "type": "shirt"
+        }
+    },
+    {
+        "model": "girlsclothesapi.clothingtype",
+        "pk": 2,
+        "fields": {
+            "type": "pants"
+        }
+    },
+    {
+        "model": "girlsclothesapi.clothingtype",
+        "pk": 3,
+        "fields": {
+            "type": "dress"
+        }
+    },
+    {
+        "model": "girlsclothesapi.clothingtype",
+        "pk": 4,
+        "fields": {
+            "type": "underwear"
+        }
+    },
+    {
+        "model": "girlsclothesapi.clothingtype",
+        "pk": 5,
+        "fields": {
+            "type": "bloomers"
+        }
+    },
+    {
+        "model": "girlsclothesapi.clothingtype",
+        "pk": 6,
+        "fields": {
+            "type": "socks"
+        }
+    },
+    {
+        "model": "girlsclothesapi.clothingtype",
+        "pk": 7,
+        "fields": {
+            "type": "shoes"
+        }
+    },
+    {
+        "model": "girlsclothesapi.clothingtype",
+        "pk": 8,
+        "fields": {
+            "type": "coat"
+        }
+    },
+    {
+        "model": "girlsclothesapi.clothingtype",
+        "pk": 9,
+        "fields": {
+            "type": "hat"
+        }
+    },
+    {
+        "model": "girlsclothesapi.clothingtype",
+        "pk": 10,
+        "fields": {
+            "type": "bow"
+        }
+    },
+    {
+        "model": "girlsclothesapi.clothingtype",
+        "pk": 11,
+        "fields": {
+            "type": "Swimwear"
+        }
+    }
+]
