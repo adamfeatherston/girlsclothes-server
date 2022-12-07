@@ -67,8 +67,8 @@ def register_user(request):
             new_user = User.objects.create_user(
                 username=request.data['username'],
                 email=request.data['email'],
-                first_name=request.data['first_name'],
-                last_name=request.data['last_name'],
+                first_name=request.data['firstName'],
+                last_name=request.data['lastName'],
                 password=request.data['password']
             )
         except IntegrityError:
@@ -82,11 +82,11 @@ def register_user(request):
         if account_type == 'kid':
             account = Kid.objects.create(
                 age=request.data['age'],
-                dress_size=request.data['dress_size'],
-                shoe_size=request.data['shoe_size'],
-                shirt_size=request.data['shirt_size'],
-                underwear_or_diaper_size=request.data['underwear_or_diaper_size'],
-                sock_size=request.data['sock_size'],
+                dress_size=request.data['dressSize'],
+                shoe_size=request.data['shoeSize'],
+                shirt_size=request.data['shirtSize'],
+                underwear_or_diaper_size=request.data['underwearOrDiaperSize'],
+                sock_size=request.data['sockSize'],
                 user=new_user
             )
             token = Token.objects.create(user=account.user)

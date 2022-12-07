@@ -1,0 +1,30 @@
+[
+    {
+        "model": "girlsclothesapi.outfit",
+        "pk": 1,
+        "fields": {
+            "outfit_description": "Play Clothes",
+            "dress_item": 7,
+            "shirt_item": null,
+            "pant_item": null,
+            "shoe_item": 6,
+            "sock_item": null,
+            "bow_item": null,
+            "outfit_image": ""
+        }
+    },
+    {
+        "model": "girlsclothesapi.outfit",
+        "pk": 2,
+        "fields": {
+            "outfit_description": "School Clothes",
+            "dress_item": 8,
+            "shirt_item": null,
+            "pant_item": null,
+            "shoe_item": 5,
+            "sock_item": null,
+            "bow_item": null,
+            "outfit_image": ""
+        }
+    }
+]
