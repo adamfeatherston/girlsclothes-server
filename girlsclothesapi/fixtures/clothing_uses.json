@@ -1,0 +1,30 @@
+[
+    {
+        "model": "girlsclothesapi.clothinguse",
+        "pk": 1,
+        "fields": {
+            "use": "Play Clothes"
+        }
+    },
+    {
+        "model": "girlsclothesapi.clothinguse",
+        "pk": 2,
+        "fields": {
+            "use": "School Clothes"
+        }
+    },
+    {
+        "model": "girlsclothesapi.clothinguse",
+        "pk": 3,
+        "fields": {
+            "use": "Dressing Nice (ex. church)"
+        }
+    },
+    {
+        "model": "girlsclothesapi.clothinguse",
+        "pk": 4,
+        "fields": {
+            "use": "Special Occasions (ex. costumes, uniforms)"
+        }
+    }
+]
