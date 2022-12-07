@@ -8,5 +8,5 @@ class ClothingItem(models.Model):
     size = models.CharField(max_length=15)
     clean_or_dirty = models.BooleanField(null=True, blank=True)
     item_fits = models.BooleanField(null=True, blank=True)
-    sibling_has_matching = models.BooleanField()
+    sibling_has_match = models.BooleanField()
     item_image = models.ImageField(upload_to=None, height_field=None, width_field=None, max_length=100, null=True, blank=True)
