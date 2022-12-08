@@ -81,6 +81,7 @@ def register_user(request):
 
         if account_type == 'kid':
             account = Kid.objects.create(
+                nickname=request.data['nickname'],
                 age=request.data['age'],
                 dress_size=request.data['dressSize'],
                 shoe_size=request.data['shoeSize'],
