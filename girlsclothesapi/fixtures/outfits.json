@@ -3,7 +3,7 @@
         "model": "girlsclothesapi.outfit",
         "pk": 1,
         "fields": {
-            "outfit_description": "Play Clothes",
+            "outfit_description": "Blue Jean Dress outfit",
             "dress_item": 7,
             "shirt_item": null,
             "pant_item": null,
@@ -17,7 +17,7 @@
         "model": "girlsclothesapi.outfit",
         "pk": 2,
         "fields": {
-            "outfit_description": "School Clothes",
+            "outfit_description": "Blue Jean Dress outfit",
             "dress_item": 8,
             "shirt_item": null,
             "pant_item": null,
