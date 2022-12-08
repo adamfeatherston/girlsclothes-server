@@ -18,3 +18,4 @@ class OutfitSerializer(serializers.ModelSerializer):
     class Meta:
         model = Outfit
         fields = ('id', 'outfit_description', 'dress_item', 'shirt_item', 'pant_item', 'shoe_item', 'sock_item', 'bow_item', 'outfit_image')
+        depth=2

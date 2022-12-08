@@ -10,3 +10,4 @@ class Outfit(models.Model):
     sock_item = models.ForeignKey('ClothingItem', on_delete=models.CASCADE, related_name='outfit_sock', null=True, blank=True)
     bow_item = models.ForeignKey('ClothingItem', on_delete=models.CASCADE, related_name='outfit_bow', null=True, blank=True)
     outfit_image = models.ImageField(upload_to=None, height_field=None, width_field=None, max_length=100, null=True, blank=True)
+    
