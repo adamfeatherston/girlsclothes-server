@@ -17,4 +17,4 @@ class KidSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Kid
-        fields = ('id', 'user', 'age', 'dress_size', 'shoe_size', 'shirt_size', 'pant_size', 'underwear_or_diaper_size', 'sock_size')
+        fields = ('id', 'kid_nickname', 'age', 'dress_size', 'shoe_size', 'shirt_size', 'pant_size', 'underwear_or_diaper_size', 'sock_size')
