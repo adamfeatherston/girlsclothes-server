@@ -2,7 +2,8 @@ from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from girlsclothesapi.models import Outfit
+from rest_framework.decorators import action
+from girlsclothesapi.models import Outfit, ClothingItem
 
 
 class OutfitView(ViewSet):
@@ -42,9 +43,27 @@ class OutfitView(ViewSet):
         item.delete()
         return Response(None, status=status.HTTP_204_NO_CONTENT)
 
+    @action(methods=['post'], detail=True)
+    def additem(self, request, pk):
+
+
+        item = ClothingItem.objects.get(pk=request.data['clothing_item'])
+        outfit = Outfit.objects.get(pk=pk)
+        outfit.clothing_items.add(item)
+        return Response({'message': 'Clothing item added to this outfit'}, status=status.HTTP_201_CREATED)
+
+    @action(methods=['delete'], detail=True)
+    def removeitem(self, request, pk):
+
+        item = ClothingItem.objects.get(pk=request.data['clothing_item'])
+        outfit = Outfit.objects.get(pk=pk)
+        outfit.clothing_items.add(item)
+        return Response({'message': 'Clothing item removed from this outfit'}, status=status.HTTP_204_NO_CONTENT)
+
 class OutfitSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Outfit
         fields = ('id', 'outfit_description', 'outfit_image')
+
         
