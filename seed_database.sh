@@ -11,4 +11,6 @@ python3 manage.py loaddata kids
 python3 manage.py loaddata clothing_types
 python3 manage.py loaddata clothing_uses
 python3 manage.py loaddata clothing_items
+python3 manage.py loaddata item_uses
 python3 manage.py loaddata outfits
+python3 manage.py loaddata outfit_items
