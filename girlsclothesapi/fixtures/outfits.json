@@ -4,12 +4,6 @@
         "pk": 1,
         "fields": {
             "outfit_description": "Blue Jean Dress outfit",
-            "dress_item": 7,
-            "shirt_item": null,
-            "pant_item": null,
-            "shoe_item": 6,
-            "sock_item": null,
-            "bow_item": null,
             "outfit_image": ""
         }
     },
@@ -18,12 +12,6 @@
         "pk": 2,
         "fields": {
             "outfit_description": "Blue Jean Dress outfit",
-            "dress_item": 8,
-            "shirt_item": null,
-            "pant_item": null,
-            "shoe_item": 5,
-            "sock_item": null,
-            "bow_item": null,
             "outfit_image": ""
         }
     }

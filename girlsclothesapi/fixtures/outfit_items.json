@@ -1,0 +1,33 @@
+[
+    {
+        "model": "girlsclothesapi.outfititem",
+        "pk": 1,
+        "fields": {
+            "outfit": 1,
+            "clothing_item": 6
+        }
+    },
+    {
+        "model": "girlsclothesapi.outfititem",
+        "pk": 2,
+        "fields": {
+            "outfit": 1,
+            "clothing_item": 7
+        }
+    },    {
+        "model": "girlsclothesapi.outfititem",
+        "pk": 3,
+        "fields": {
+            "outfit": 2,
+            "clothing_item": 8
+        }
+    },
+    {
+        "model": "girlsclothesapi.outfititem",
+        "pk": 4,
+        "fields": {
+            "outfit": 2,
+            "clothing_item": 5
+        }
+    }
+]
