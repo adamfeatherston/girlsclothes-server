@@ -10,3 +10,4 @@ class ClothingItem(models.Model):
     item_fits = models.BooleanField(null=True, blank=True)
     sibling_has_match = models.BooleanField()
     item_image = models.ImageField(upload_to=None, height_field=None, width_field=None, max_length=100, null=True, blank=True)
+    clothing_uses = models.ManyToManyField("ClothingUse", through="ItemUse", related_name="clothing_uses")
