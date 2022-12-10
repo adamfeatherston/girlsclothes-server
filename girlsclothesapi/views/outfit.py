@@ -12,7 +12,7 @@ class OutfitView(ViewSet):
 
         outfit = Outfit.objects.create(
             outfit_description=request.data["outfit_description"],
-            outfit_image=request.data["outfit_image"],
+            outfit_image=request.data["outfit_image"]
         )
         serializer = OutfitSerializer(outfit)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -44,20 +44,19 @@ class OutfitView(ViewSet):
         return Response(None, status=status.HTTP_204_NO_CONTENT)
 
     @action(methods=['post'], detail=True)
-    def additem(self, request, pk):
+    def additems(self, request, pk):
 
-
-        item = ClothingItem.objects.get(pk=request.data['clothing_item'])
+        item = ClothingItem.objects.get(pk=request.data['clothing_items'])
         outfit = Outfit.objects.get(pk=pk)
         outfit.clothing_items.add(item)
         return Response({'message': 'Clothing item added to this outfit'}, status=status.HTTP_201_CREATED)
 
     @action(methods=['delete'], detail=True)
-    def removeitem(self, request, pk):
+    def removeitems(self, request, pk):
 
-        item = ClothingItem.objects.get(pk=request.data['clothing_item'])
+        item = ClothingItem.objects.get(pk=request.data['clothing_items'])
         outfit = Outfit.objects.get(pk=pk)
-        outfit.clothing_items.add(item)
+        outfit.clothing_items.remove(item)
         return Response({'message': 'Clothing item removed from this outfit'}, status=status.HTTP_204_NO_CONTENT)
 
 class OutfitSerializer(serializers.ModelSerializer):
