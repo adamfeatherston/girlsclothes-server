@@ -21,13 +21,13 @@ class OutfitView(ViewSet):
 
         outfit = Outfit.objects.all()
         serializer = OutfitSerializer(outfit, many=True)
-        return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
     def retrieve(self, request, pk):
 
         outfit = Outfit.objects.get(pk=pk)
         serializer = OutfitSerializer(outfit)
-        return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
     def update(self, request, pk):
 
@@ -63,6 +63,7 @@ class OutfitSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Outfit
-        fields = ('id', 'outfit_description', 'outfit_image')
+        fields = ('id', 'outfit_description', 'outfit_image', 'clothing_items')
+        depth = 2
 
         

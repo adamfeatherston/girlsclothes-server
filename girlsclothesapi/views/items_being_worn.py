@@ -11,7 +11,7 @@ class ItemsBeingWornView(ViewSet):
 
         worn = ItemsBeingWorn.objects.all()
         serializer = ItemsBeingWornSerializer(worn, many=True)
-        return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
     def create(self, request):
 
@@ -23,7 +23,7 @@ class ItemsBeingWornView(ViewSet):
             clothing_item=clothing_item
         )
         serializer = ItemsBeingWornSerializer(wearing)
-        return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 class ItemsBeingWornSerializer(serializers.ModelSerializer):
 
