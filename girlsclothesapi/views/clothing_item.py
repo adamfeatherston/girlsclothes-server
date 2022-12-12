@@ -12,13 +12,13 @@ class ClothingItemView(ViewSet):
 
         item = ClothingItem.objects.all()
         serializer = ClothingItemSerializer(item, many=True)
-        return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
     def retrieve(self, request, pk):
 
         item = ClothingItem.objects.get(pk=pk)
         serializer = ClothingItemSerializer(item)
-        return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
     def create(self, request):
 
@@ -82,6 +82,6 @@ class ClothingItemSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ClothingItem
-        fields = ('id', 'item_description', 'clothing_type', 'kid', 'size', 'clean_or_dirty', 'item_fits', 'sibling_has_match', 'item_image')
-        
+        fields = ('id', 'item_description', 'clothing_type', 'kid', 'size', 'clean_or_dirty', 'item_fits', 'sibling_has_match', 'item_image', 'clothing_uses')
+        depth = 2
         

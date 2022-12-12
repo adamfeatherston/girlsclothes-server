@@ -10,13 +10,13 @@ class KidView(ViewSet):
 
         kid = Kid.objects.all()
         serializer = KidSerializer(kid, many=True)
-        return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
     def retrieve(self, request, pk):
 
         kid = Kid.objects.get(pk=pk)
         serializer = KidSerializer(kid)
-        return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
     def update(self, request, pk):
 

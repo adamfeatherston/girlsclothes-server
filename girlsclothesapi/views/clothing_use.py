@@ -11,7 +11,7 @@ class ClothingUseView(ViewSet):
 
         use = ClothingUse.objects.all()
         serializer = ClothingUseSerializer(use, many=True)
-        return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 class ClothingUseSerializer(serializers.ModelSerializer):
 
