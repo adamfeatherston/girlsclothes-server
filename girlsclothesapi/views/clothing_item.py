@@ -90,19 +90,35 @@ class ClothingItemView(ViewSet):
 
     def update(self, request, pk):
 
-        item = ClothingItem.objects.get(pk=pk)
-        item.item_description=request.data["item_description"]
-        item.size=request.data["size"]
-        item.clean_or_dirty=request.data["clean_or_dirty"]
-        item.item_fits=request.data["item_fits"]
-        item.sibling_has_match=request.data["sibling_has_match"]
-        item.item_image=request.data["item_image"]
+        if request.auth.user.is_staff:
+            item = ClothingItem.objects.get(pk=pk)
+            item.item_description=request.data["item_description"]
+            item.size=request.data["size"]
+            item.clean_or_dirty=request.data["clean_or_dirty"]
+            item.item_fits=request.data["item_fits"]
+            item.sibling_has_match=request.data["sibling_has_match"]
+            item.item_image=request.data["item_image"]
 
-        clothing_type = ClothingType.objects.get(pk=request.data["clothing_type"])
-        kid = Kid.objects.get(pk=request.data["kid"])
-        item.clothing_type = clothing_type
-        item.kid=kid
-        item.save()
+            clothing_type = ClothingType.objects.get(pk=request.data["clothing_type"])
+            kid = Kid.objects.get(pk=request.data["kid"])
+            item.clothing_type = clothing_type
+            item.kid=kid
+            item.save()
+
+        else:
+            item = ClothingItem.objects.filter(kid__user=request.auth.user)
+            item.item_description=request.data["item_description"]
+            item.size=request.data["size"]
+            item.clean_or_dirty=request.data["clean_or_dirty"]
+            item.item_fits=request.data["item_fits"]
+            item.sibling_has_match=request.data["sibling_has_match"]
+            item.item_image=request.data["item_image"]
+
+            clothing_type = ClothingType.objects.get(pk=request.data["clothing_type"])
+            kid = Kid.objects.filter(kid__user=request.auth.user)
+            item.clothing_type = clothing_type
+            item.kid=kid
+            item.save()
 
         return Response(None, status=status.HTTP_204_NO_CONTENT)
 
@@ -135,6 +151,6 @@ class ClothingItemSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ClothingItem
-        fields = ('id', 'item_description', 'clothing_type', 'kid_nickname', 'size', 'clean_or_dirty', 'item_fits', 'sibling_has_match', 'item_image', 'clothing_uses')
+        fields = ('id', 'item_description', 'item_type', 'kid', 'kid_nickname', 'size', 'clean_or_dirty', 'item_fits', 'sibling_has_match', 'item_image', 'clothing_uses')
         depth = 1
         

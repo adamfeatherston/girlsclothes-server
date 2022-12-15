@@ -15,3 +15,13 @@ class ClothingItem(models.Model):
     @property
     def kid_nickname(self):
         return f'{self.kid.nickname}'
+
+    @property
+    def item_type(self):
+        return f'{self.clothing_type.type}'
+
+    @property
+    def item_uses(self):
+        return f'{self.clothing_use.use}'
+
+

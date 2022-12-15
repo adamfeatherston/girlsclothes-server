@@ -8,29 +8,47 @@ class KidView(ViewSet):
 
     def list(self, request):
 
-        kid = Kid.objects.all()
-        serializer = KidSerializer(kid, many=True)
+        if request.auth.user.is_staff:
+            kid = Kid.objects.all()
+            serializer = KidSerializer(kid, many=True)
+
+
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def retrieve(self, request, pk):
 
-        kid = Kid.objects.get(pk=pk)
-        serializer = KidSerializer(kid)
+        if request.auth.user.is_staff:
+            kid = Kid.objects.get(pk=pk)
+            serializer = KidSerializer(kid)
+        else:
+            kid = Kid.objects.filter(kid__user=request.auth.user)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def update(self, request, pk):
 
-        kid = Kid.objects.get(pk=pk)
-        kid.nickname=request.data["nickname"]
-        kid.age=request.data["age"]
-        kid.dress_size=request.data["dress_size"]
-        kid.shoe_size=request.data["shoe_size"]
-        kid.shirt_size=request.data["shirt_size"]
-        kid.pant_size=request.data["pant_size"]
-        kid.underwear_or_diaper_size=request.data["underwear_or_diaper_size"]
-        kid.sock_size=request.data["sock_size"]
+        if request.auth.user.is_staff:
+            kid = Kid.objects.get(pk=pk)
+            kid.nickname=request.data["nickname"]
+            kid.age=request.data["age"]
+            kid.dress_size=request.data["dress_size"]
+            kid.shoe_size=request.data["shoe_size"]
+            kid.shirt_size=request.data["shirt_size"]
+            kid.pant_size=request.data["pant_size"]
+            kid.underwear_or_diaper_size=request.data["underwear_or_diaper_size"]
+            kid.sock_size=request.data["sock_size"]
+            kid.save()
 
-        kid.save()
+        else:
+            kid = Kid.objects.filter(kid__user=request.auth.user)
+            kid.nickname=request.data["nickname"]
+            kid.age=request.data["age"]
+            kid.dress_size=request.data["dress_size"]
+            kid.shoe_size=request.data["shoe_size"]
+            kid.shirt_size=request.data["shirt_size"]
+            kid.pant_size=request.data["pant_size"]
+            kid.underwear_or_diaper_size=request.data["underwear_or_diaper_size"]
+            kid.sock_size=request.data["sock_size"]
+            kid.save()
 
         return Response(None, status=status.HTTP_204_NO_CONTENT)
 
