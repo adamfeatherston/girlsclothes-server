@@ -13,42 +13,42 @@ class ClothingItemView(ViewSet):
         items = []
 
         if request.auth.user.is_staff:
-            items = ClothingItem.objects.all()
+            items = ClothingItem.objects.all().order_by('clothing_type')
 
             if "type" in request.query_params:
                 items = items.filter(clothing_type_id=request.query_params['type'])
                 if request.query_params['type'] == "{id}":
                     pass
 
-            if "isClean" in request.query_params:
+            elif "isClean" in request.query_params:
                 items = items.filter(clean_or_dirty=True)
                 if request.query_params['isClean'] == True:
                     pass
 
-            if "siblingMatch" in request.query_params:
+            elif "siblingMatch" in request.query_params:
                 items = items.filter(sibling_has_match=True)
                 if request.query_params['siblingMatch'] == True:
                     pass
 
-            if "kid" in request.query_params:
+            elif "kid" in request.query_params:
                 items = items.filter(kid_id=request.query_params['kid'])
                 if request.query_params['kid'] == "{id}":
                     pass
 
         else:
-            items = ClothingItem.objects.filter(kid__user=request.auth.user)
+            items = ClothingItem.objects.filter(kid__user=request.auth.user).order_by('clothing_type')
 
             if "type" in request.query_params:
                 items = items.filter(clothing_type_id=request.query_params['type'])
                 if request.query_params['type'] == "{id}":
                     pass
 
-            if "isClean" in request.query_params:
+            elif "isClean" in request.query_params:
                 items = items.filter(clean_or_dirty=True)
                 if request.query_params['isClean'] == True:
                     pass
 
-            if "siblingMatch" in request.query_params:
+            elif "siblingMatch" in request.query_params:
                 items = items.filter(sibling_has_match=True)
                 if request.query_params['siblingMatch'] == True:
                     pass
