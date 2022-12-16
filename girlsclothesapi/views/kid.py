@@ -11,6 +11,8 @@ class KidView(ViewSet):
         if request.auth.user.is_staff:
             kid = Kid.objects.all()
             serializer = KidSerializer(kid, many=True)
+        else:
+            kid = Kid.objects.filter(kid__user=request.auth.user)
 
 
         return Response(serializer.data, status=status.HTTP_200_OK)
@@ -22,6 +24,7 @@ class KidView(ViewSet):
             serializer = KidSerializer(kid)
         else:
             kid = Kid.objects.filter(kid__user=request.auth.user)
+            
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def update(self, request, pk):
