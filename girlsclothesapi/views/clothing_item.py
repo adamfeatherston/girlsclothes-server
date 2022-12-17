@@ -3,7 +3,7 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
 from rest_framework.decorators import action
-from girlsclothesapi.models import ClothingItem, Kid, ClothingType, ClothingUse
+from girlsclothesapi.models import ClothingItem, Kid, ClothingType, ClothingUse, ItemUse
 
 
 class ClothingItemView(ViewSet):
@@ -71,19 +71,48 @@ class ClothingItemView(ViewSet):
     def create(self, request):
 
         if request.auth.user.is_staff:
+
+            required_fields = ['item_description', 'clothing_type', 'kid', 'size', 'clean_or_dirty', 'item_fits', 'sibling_has_match',  'item_image']
+            missing_fields = "Please send all required fields"
+            is_field_missing = False
+
+            for field in required_fields:
+                value = request.data.get(field, None)
+                if value is None:
+                    missing_fields = f'{missing_fields} and {field}'
+                    is_field_missing = True
+            
+            if is_field_missing:
+                return Response({"message": missing_fields}, status = status.HTTP_400_BAD_REQUEST)
+
+            uses = request.data["uses"]
+            for use in uses:
+                try:
+                    use_to_assign = ClothingUse.objects.get(pk=use)
+                except: ClothingUse.DoesNotExist
+                return Response({"message": "The use you specified does not exist"}, status = status.HTTP_404_NOT_FOUND)
+
             clothing_type= ClothingType.objects.get(pk=request.data["clothing_type"])
             kid = Kid.objects.get(pk=request.data["kid"])
 
             item = ClothingItem.objects.create(
-                item_description=request.data["item_description"],
+                item_description=request.data["itemDescription"],
                 size=request.data["size"],
-                clean_or_dirty=request.data["clean_or_dirty"],
-                item_fits=request.data["item_fits"],
-                sibling_has_match=request.data["sibling_has_match"],
-                item_image=request.data["item_image"],
+                clean_or_dirty=request.data["cleanOrDirty"],
+                item_fits=request.data["itemFits"],
+                sibling_has_match=request.data["siblingHasMatch"],
+                item_image=request.data["itemImage"],
                 clothing_type=clothing_type,
                 kid=kid
             )
+
+            for use in uses:
+                use_to_assign = ItemUse.objects.get(pk=use)
+                item_use = ClothingUse()
+                item_use.item = item
+                item_use.use = use_to_assign
+                item_use.save()
+
 
         serializer = ClothingItemSerializer(item)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
