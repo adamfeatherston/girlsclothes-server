@@ -10,8 +10,6 @@ class ClothingItemView(ViewSet):
 
     def list(self, request):
 
-        items = []
-
         if request.auth.user.is_staff:
             items = ClothingItem.objects.all().order_by('clothing_type')
 
@@ -85,37 +83,37 @@ class ClothingItemView(ViewSet):
             if is_field_missing:
                 return Response({"message": missing_fields}, status = status.HTTP_400_BAD_REQUEST)
 
-            uses = request.data["uses"]
-            for use in uses:
-                try:
-                    use_to_assign = ClothingUse.objects.get(pk=use)
-                except: ClothingUse.DoesNotExist
-                return Response({"message": "The use you specified does not exist"}, status = status.HTTP_404_NOT_FOUND)
+            # uses = request.data["clothing_uses"]
+            # for use in uses:
+            #     try:
+            #         use_to_assign = ClothingUse.objects.get(pk=use)
+            #     except ClothingUse.DoesNotExist:
+            #         return Response({"message": "The use you specified does not exist"}, status = status.HTTP_404_NOT_FOUND)
 
             clothing_type= ClothingType.objects.get(pk=request.data["clothing_type"])
             kid = Kid.objects.get(pk=request.data["kid"])
 
             item = ClothingItem.objects.create(
-                item_description=request.data["itemDescription"],
+                item_description=request.data["item_description"],
                 size=request.data["size"],
-                clean_or_dirty=request.data["cleanOrDirty"],
-                item_fits=request.data["itemFits"],
-                sibling_has_match=request.data["siblingHasMatch"],
-                item_image=request.data["itemImage"],
+                clean_or_dirty=request.data["clean_or_dirty"],
+                item_fits=request.data["item_fits"],
+                sibling_has_match=request.data["sibling_has_match"],
+                item_image=request.data["item_image"],
                 clothing_type=clothing_type,
                 kid=kid
             )
 
-            for use in uses:
-                use_to_assign = ItemUse.objects.get(pk=use)
-                item_use = ClothingUse()
-                item_use.item = item
-                item_use.use = use_to_assign
-                item_use.save()
+            # for use in uses:
+            #     use_to_assign = ClothingUse.objects.get(pk=use)
+            #     item_use = ItemUse()
+            #     item_use.clothing_item = item
+            #     item_use.clothing_use = use_to_assign
+            #     item_use.save()
 
 
-        serializer = ClothingItemSerializer(item)
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
+            serializer = ClothingItemSerializer(item)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     def update(self, request, pk):
 
@@ -165,7 +163,7 @@ class ClothingItemView(ViewSet):
             use = ClothingUse.objects.get(pk=request.data['clothing_uses'])
             outfit = ClothingItem.objects.get(pk=pk)
             outfit.clothing_uses.add(use)
-        return Response({'message': 'Clothing use added to this outfit'}, status=status.HTTP_201_CREATED)
+        return Response({'message': 'Clothing use added to this item'}, status=status.HTTP_201_CREATED)
 
     @action(methods=['delete'], detail=True)
     def removeuses(self, request, pk):
@@ -174,7 +172,13 @@ class ClothingItemView(ViewSet):
             use = ClothingUse.objects.get(pk=request.data['clothing_uses'])
             outfit = ClothingItem.objects.get(pk=pk)
             outfit.clothing_uses.remove(use)
-        return Response({'message': 'Clothing use removed from this outfit'}, status=status.HTTP_204_NO_CONTENT)
+        return Response({'message': 'Clothing use removed from this item'}, status=status.HTTP_204_NO_CONTENT)
+
+class ClothingUseSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = ClothingUse
+        fields = ('use')
 
 class ClothingItemSerializer(serializers.ModelSerializer):
 
