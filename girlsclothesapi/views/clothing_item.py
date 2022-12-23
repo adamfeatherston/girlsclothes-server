@@ -70,7 +70,7 @@ class ClothingItemView(ViewSet):
 
         if request.auth.user.is_staff:
 
-            required_fields = ['item_description', 'clothing_type', 'kid', 'size', 'clean_or_dirty', 'item_fits', 'sibling_has_match',  'item_image']
+            required_fields = ['item_description', 'clothing_type', 'kid', 'size', 'clean_or_dirty', 'item_fits', 'sibling_has_match', 'item_image', 'clothing_uses']
             missing_fields = "Please send all required fields"
             is_field_missing = False
 
@@ -83,12 +83,12 @@ class ClothingItemView(ViewSet):
             if is_field_missing:
                 return Response({"message": missing_fields}, status = status.HTTP_400_BAD_REQUEST)
 
-            # uses = request.data["clothing_uses"]
-            # for use in uses:
-            #     try:
-            #         use_to_assign = ClothingUse.objects.get(pk=use)
-            #     except ClothingUse.DoesNotExist:
-            #         return Response({"message": "The use you specified does not exist"}, status = status.HTTP_404_NOT_FOUND)
+            uses = request.data["clothing_uses"]
+            for use in uses:
+                try:
+                    use_to_assign = ClothingUse.objects.get(pk=use)
+                except ClothingUse.DoesNotExist:
+                    return Response({"message": "The use you specified does not exist"}, status = status.HTTP_404_NOT_FOUND)
 
             clothing_type= ClothingType.objects.get(pk=request.data["clothing_type"])
             kid = Kid.objects.get(pk=request.data["kid"])
@@ -104,12 +104,12 @@ class ClothingItemView(ViewSet):
                 kid=kid
             )
 
-            # for use in uses:
-            #     use_to_assign = ClothingUse.objects.get(pk=use)
-            #     item_use = ItemUse()
-            #     item_use.clothing_item = item
-            #     item_use.clothing_use = use_to_assign
-            #     item_use.save()
+            for use in uses:
+                use_to_assign = ClothingUse.objects.get(pk=use)
+                item_use = ItemUse()
+                item_use.clothing_item = item
+                item_use.clothing_use = use_to_assign
+                item_use.save()
 
 
             serializer = ClothingItemSerializer(item)
