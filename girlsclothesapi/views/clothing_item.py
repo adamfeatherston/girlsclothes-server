@@ -180,10 +180,22 @@ class ClothingUseSerializer(serializers.ModelSerializer):
         model = ClothingUse
         fields = ('use')
 
+class ClothingTypeSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = ClothingType
+        fields = ('type')
+
+class ClothingKidSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Kid
+        fields = ('nickname')
+
 class ClothingItemSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ClothingItem
-        fields = ('id', 'item_description', 'item_type', 'kid', 'kid_nickname', 'size', 'clean_or_dirty', 'item_fits', 'sibling_has_match', 'item_image', 'clothing_uses')
+        fields = ('id', 'item_description', 'clothing_type', 'item_type', 'kid', 'kid_nickname', 'size', 'clean_or_dirty', 'item_fits', 'sibling_has_match', 'item_image', 'clothing_uses', 'item_uses')
         depth = 1
         
