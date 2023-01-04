@@ -13,6 +13,11 @@ class ClothingItemView(ViewSet):
         if request.auth.user.is_staff:
             items = ClothingItem.objects.all().order_by('clothing_type')
 
+            for item in items:
+                item.creator=False
+                if item.kid.user==request.auth.user:
+                    item.creator=True
+
             if "type" in request.query_params:
                 items = items.filter(clothing_type_id=request.query_params['type'])
                 if request.query_params['type'] == "{id}":
@@ -130,6 +135,7 @@ class ClothingItemView(ViewSet):
             kid = Kid.objects.get(pk=request.data["kid"])
             item.clothing_type = clothing_type
             item.kid=kid
+            item.clothing_uses.set(request.data["clothing_uses"])
             item.save()
 
         else:
@@ -145,6 +151,7 @@ class ClothingItemView(ViewSet):
             kid = Kid.objects.filter(kid__user=request.auth.user)
             item.clothing_type = clothing_type
             item.kid=kid
+            item.clothing_uses.set(request.data["clothing_uses"])
             item.save()
 
         return Response(None, status=status.HTTP_204_NO_CONTENT)
@@ -196,6 +203,6 @@ class ClothingItemSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ClothingItem
-        fields = ('id', 'item_description', 'clothing_type', 'item_type', 'kid', 'kid_nickname', 'size', 'clean_or_dirty', 'item_fits', 'sibling_has_match', 'item_image', 'clothing_uses', 'item_uses')
+        fields = ('id', 'item_description', 'clothing_type', 'item_type', 'kid', 'kid_nickname', 'size', 'clean_or_dirty', 'item_fits', 'sibling_has_match', 'item_image', 'clothing_uses', 'item_uses', 'creator')
         depth = 1
         
