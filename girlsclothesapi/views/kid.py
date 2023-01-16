@@ -9,7 +9,7 @@ class KidView(ViewSet):
     def list(self, request):
 
         if request.auth.user.is_staff:
-            kid = Kid.objects.all()
+            kid = Kid.objects.all().order_by('nickname')
         else:
             kid = Kid.objects.filter(user=request.auth.user)
 
